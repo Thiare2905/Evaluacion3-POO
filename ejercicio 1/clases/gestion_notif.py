@@ -18,7 +18,10 @@ class Gestion_Notif:
         exitos = 0
         fallos = 0
         for d in self.__destinos:
-            print(f"{d.get_destino()} -> costo: {d.costo_total()}")
+            if d.get_fallos() == 0:
+                print(f"{d.get_tipo()}: {d.get_destino()} -> costo: {d.costo_total()}")
+            else:
+                print(f"{d.get_tipo()}: {d.get_destino()} -> costo: 0 (fallido)")
             exitos += d.get_exitos()
             fallos += d.get_fallos()
         print(f"Envíos exitosos: {exitos}\n"
@@ -27,4 +30,4 @@ class Gestion_Notif:
     # Método para enviar notificaciones a todos los destinos registrados
     def enviar(self):
         for d in self.__destinos:
-            print(d.enviar_mensaje())
+            d.enviar_mensaje()

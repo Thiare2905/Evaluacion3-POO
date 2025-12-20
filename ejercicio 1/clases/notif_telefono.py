@@ -6,6 +6,10 @@ COSTO_CHAR = 25     # Costo por cada caracter
 
 # Clase para notificaciones por teléfono
 class Notif_Telefono(Notificacion):
+    def __init__(self, mensaje, destino):
+        super().__init__(destino, mensaje)
+        self.__tipo = "Teléfono"
+
     # Método para validar el formato del número de teléfono
     def validar_destino(self, destino):
         patron = r'^(\+56)?9\d{8}$'
@@ -22,6 +26,10 @@ class Notif_Telefono(Notificacion):
     def enviar_mensaje(self):
         if not self.validar_destino(self.get_destino()):
             self.suma_fallo()
-            return f"El número de teléfono es invalido ({self.get_destino()})."
+            print(f"El número de teléfono es invalido ({self.get_destino()}).")
+            return
         print(super().validar_mensaje(MAX_LARGO_TELF))
     
+    # getter del tipo de notificación
+    def get_tipo(self):
+        return self.__tipo

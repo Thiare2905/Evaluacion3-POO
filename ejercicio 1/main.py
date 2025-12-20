@@ -39,17 +39,17 @@ while True:
             # Manejo de tipos de destino
             match tipo:
                 case "1":   
-                    print("- Agregar Correo")
+                    print("- Agregar Correo (ejemplo: usuario@dominio.com)")
                     destino = str(input("Ingrese el correo: "))
                     n_correo = Notif_Correo(mensaje, destino)       # Crear instancia de Notif_Correo
                     print(gestion_notif.agregar_destino(n_correo))  # Agregar destino a la gestión
                 case "2":
-                    print("- Agregar Telefono")
+                    print("- Agregar Telefono (ejemplo: +56912345678 o 912345678)")
                     destino = str(input("Ingrese el telefono: "))
                     n_telefono = Notif_Telefono(mensaje, destino)       # Crear instancia de Notif_Telefono
                     print(gestion_notif.agregar_destino(n_telefono))    # Agregar destino a la gestión
                 case "3":
-                    print("- Agregar Url")
+                    print("- Agregar Url (ejemplo: https://www.ejemplo.com)")
                     destino = str(input("Ingrese el url: "))    
                     n_url = Notif_Url(mensaje, destino)             # Crear instancia de Notif_Url
                     print(gestion_notif.agregar_destino(n_url))     # Agregar destino a la gestión

@@ -7,6 +7,9 @@ COSTO_EXTRA = 50    # Costo extra si el mensaje excede los 200 caracteres
 
 # Clase para notificaciones por URL
 class Notif_Url(Notificacion):
+    def __init__(self, mensaje, destino):
+        super().__init__(destino, mensaje)
+        self.__tipo = "URL"
     # Método para validar el formato de la URL
     def validar_destino(self, destino):
         patron = r'^(https?:\/\/)([\w-]+\.)+[\w-]+(\/[\w\-\.~]*)*$'
@@ -25,5 +28,10 @@ class Notif_Url(Notificacion):
     def enviar_mensaje(self):
         if not self.validar_destino(self.get_destino()):
             self.suma_fallo()
-            return f"La URL no es valida ({self.get_destino()})."
+            print(f"La URL no es valida ({self.get_destino()}).")
+            return
         print(super().validar_mensaje(MAX_LARGO_URL))
+
+    # getter del tipo de notificación
+    def get_tipo(self): 
+        return self.__tipo
